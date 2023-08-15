@@ -1,7 +1,7 @@
 import { DataTypes } from 'sequelize';
 
 const galeryModels = (sequelize) =>
-  sequelize.define('w', {
+  sequelize.define('Galery', {
     title: {
       type: DataTypes.STRING,
       allowNull: false,
