@@ -1,7 +1,7 @@
 import express from 'express';
 import cors from 'cors';
 import db from './database/db.js';
-import teamRouter from './routes/teamRoute.js';
+import galeryRouter from './routes/galeryRoute.js';
 
 const port = process.env.PORT || 6952;
 const app = express();
@@ -18,7 +18,7 @@ db.sync()
     console.log('Failed to sync database', err);
   });
 
-app.use('/api/teams', teamRouter);
+app.use('/api/galery', galeryRouter);
 
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
