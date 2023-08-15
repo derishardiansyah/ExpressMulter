@@ -3,16 +3,26 @@ import { galery } from '../database/db.js';
 const galeryController = {
   addGalery: async (req, res) => {
     try {
-      const data = req.body;
+      console.log(req.body, req.file);
+      const data = {
+        title: req.body.title,
+        photo_url: req.file.filename,
+      };
       const newGalery = await galery.create(data);
-      res.json({
-        status: 'success',
-        data: newGalery,
-      });
-    } catch (error) {
-      res.json({
+      if (newGalery) {
+        res.json({
+          status: 'success',
+          statusCode: 200,
+          message: 'Success add galery',
+          data: newGalery,
+        });
+      }
+    } catch (err) {
+      console.log(err);
+      res.status(500).json({
         status: 'error',
-        message: error.message,
+        statusCode: 500,
+        message: err,
       });
     }
   },
