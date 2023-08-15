@@ -7,6 +7,7 @@ const galeryRouter = express.Router();
 // galeryRouter.get('/', galeryController.getTeam);
 // galeryRouter.get('/:id', galeryRouter.getTeamById);
 galeryRouter.post('/', upload.single('photo_url'), galeryController.addGalery);
+galeryRouter.get('/', galeryController.getGalery);
 // galeryRouter.put('/:id', galeryRouter.updateTeam);
 // galeryRouter.delete('/:id', galeryRouter.deleteTeam);
 

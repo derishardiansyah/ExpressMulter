@@ -19,6 +19,7 @@ db.sync()
   });
 
 app.use('/api/galery', galeryRouter);
+app.use(express.static('public/photo'));
 
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);

@@ -6,7 +6,7 @@ const galeryController = {
       console.log(req.body, req.file);
       const data = {
         title: req.body.title,
-        photo_url: req.file.filename,
+        photo_url: `http://localhost:1900/${req.file.filename}`,
       };
       const newGalery = await galery.create(data);
       if (newGalery) {
@@ -19,6 +19,23 @@ const galeryController = {
       }
     } catch (err) {
       console.log(err);
+      res.status(500).json({
+        status: 'error',
+        statusCode: 500,
+        message: err,
+      });
+    }
+  },
+  getGalery: async (req, res) => {
+    try {
+      const galeries = await galery.findAll();
+      res.json({
+        status: 'success',
+        statusCode: 200,
+        message: 'Success get all galeries',
+        data: galeries,
+      });
+    } catch (err) {
       res.status(500).json({
         status: 'error',
         statusCode: 500,
